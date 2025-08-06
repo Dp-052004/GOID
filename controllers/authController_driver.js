@@ -14,7 +14,7 @@ const Rider = require('../models/rider-model'); // Adjust the path as necessary
 const geocoder = NodeGeocoder({
   provider: 'google', 
   httpAdapter: 'https',
-  apiKey: 'AIzaSyDu3n8SgW9peGPFRl5Qe7fYvGdeuk8xzrI', 
+  apiKey: process.env.GOOGLE_MAPS_API_KEY, 
   formatter: null 
 });
 
@@ -572,4 +572,5 @@ module.exports.cancelScheduledRide = async function(req, res) {
         console.error("Error canceling scheduled ride:", error);
         res.status(500).json({ message: "Error canceling scheduled ride" });
     }
+
 };
