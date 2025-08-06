@@ -135,7 +135,7 @@ const getRideConfirmation = async (req, res) => {
     
       } : null; // Handle case where driverId might not be populated
 
-      res.render('rideConfirmation', { rider, driver, rideRequest,otp: rideRequest.otp, riderEmail: rider.eEmail }); // Pass OTP to the view
+      res.render('rideConfirmation', { rider, driver, rideRequest,otp: rideRequest.otp, riderEmail: rider.eEmail, apiKey: process.env.GOOGLE_MAPS_API_KEY }); // Pass OTP to the view
   } catch (error) {
       console.error("Error fetching ride details:", error); // Improved error logging
       res.status(500).json({ message: "Error fetching ride details" });
@@ -252,7 +252,7 @@ const viewRideDetails = async (req, res) => {
         longitude: rideRequest.driverId.longitude, 
     } : null; 
 
-      res.render('driverRideDetails', { rideRequest,driver}); 
+      res.render('driverRideDetails', { rideRequest,driver, apiKey: process.env.GOOGLE_MAPS_API_KEY }); 
   } catch (error) {
       console.error("Error fetching ride details:", error);
       res.status(500).json({ message: "Error fetching ride details" });
@@ -495,3 +495,4 @@ module.exports = {
   cancelScheduledRide
 
 };
+
