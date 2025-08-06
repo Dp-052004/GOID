@@ -116,7 +116,7 @@ router.get("/ride", function(req, res) {
         req.flash("error", "You need to login first to access this page");
         return res.redirect("/login");
     }
-    res.render("ride", { isLoggedIn: req.session.isLoggedIn });
+    res.render("ride", { isLoggedIn: req.session.isLoggedIn, apiKey: process.env.GOOGLE_MAPS_API_KEY });
 });
 router.get("/logout",isLoggedIn, function(req, res) {
     req.session.isLoggedIn = false;
@@ -140,8 +140,9 @@ router.get('/my_account',(req,res)=>{
 });
 
 router.get('/rideOpt',(req,res)=>{
-    res.render('rideOpt');
+    res.render('rideOpt', { apiKey: process.env.GOOGLE_MAPS_API_KEY });
 });
 
 module.exports =router;
+
 
