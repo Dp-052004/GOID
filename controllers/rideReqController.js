@@ -16,7 +16,7 @@ const officeLocation = {
 const geocoder = NodeGeocoder({
   provider: 'google', // Use 'google' or another provider
   httpAdapter: 'https',
-  apiKey: 'AIzaSyDu3n8SgW9peGPFRl5Qe7fYvGdeuk8xzrI', // Replace with your API key
+  apiKey: process.env.GOOGLE_MAPS_API_KEY, // Replace with your API key
   formatter: null 
 });
 
@@ -493,4 +493,5 @@ module.exports = {
   rateRide,
   getScheduledRides,
   cancelScheduledRide
+
 };
